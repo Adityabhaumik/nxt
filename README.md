@@ -13,7 +13,7 @@ API.
 ## Setup Instructions
 
 1. Clone the repo:
-git clone <your-repo-link>
+git clone https://github.com/Adityabhaumik/nxt.git
 cd flutter_article_app
 2. Install dependencies:
 flutter pub get

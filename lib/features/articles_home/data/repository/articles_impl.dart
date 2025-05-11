@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:nxt/constants.dart';
 import 'package:nxt/features/articles_home/data/models/posts_data_model.dart';
 import 'package:nxt/features/articles_home/domain/entities/post_data_enitity.dart';
 import 'package:nxt/features/articles_home/domain/repository/articles_repo.dart';
@@ -28,7 +29,7 @@ class ArticlesRepositoryImpl extends ArticlesRepository {
   Future<List<ArticleDataEnitity>> getFavouriteArtices() async {
     try {
       final SharedPreferences prev = await SharedPreferences.getInstance();
-      final List<String>? articles = prev.getStringList('favouriteArticles');
+      final List<String>? articles = prev.getStringList(kfavouriteArticles);
       List<ArticleDataEnitity> articlesList = [];
       if (articles == null) {
         return [];
@@ -52,7 +53,7 @@ class ArticlesRepositoryImpl extends ArticlesRepository {
         articlesToBeSaved
             .add(ArticleDataModel.toJson(ArticleDataModel.fromEntity(article)));
       }
-      final res = prev.setStringList('favouriteArticles', articlesToBeSaved);
+      final res = prev.setStringList(kfavouriteArticles, articlesToBeSaved);
       return res;
     } catch (e) {
       rethrow;
